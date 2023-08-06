@@ -18,8 +18,6 @@
 *.aps
 *.appx
 *.appxsym
-*.vcxproj.user
-*.vcxproj.filters
 
 # Build results
 [Dd]ebug/
@@ -29,11 +27,6 @@ x86/
 [Oo]bj/
 
 # Visual Studio files
-*.sln
-*.vcxproj
-*.vcproj
-*.vcxproj.filters
-*.vcxproj.user
 *.props
 *.targets
 
