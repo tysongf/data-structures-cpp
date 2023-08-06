@@ -1,0 +1,63 @@
+# Compiled Object files
+*.sdf
+*.opensdf
+*.obj
+*.o
+*.pch
+*.pdb
+*.idb
+*.ipdb
+*.exp
+*.lib
+*.dll
+*.exe
+
+# Compiled Static libraries
+*.sbr
+*.suo
+*.aps
+*.appx
+*.appxsym
+*.vcxproj.user
+*.vcxproj.filters
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Oo]bj/
+
+# Visual Studio files
+*.sln
+*.vcxproj
+*.vcproj
+*.vcxproj.filters
+*.vcxproj.user
+*.props
+*.targets
+
+# CMake files
+CMakeLists.txt
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+
+# Other generated files
+*.log
+*.sqlite
+*.sdf
+*.opensdf
+*.pch
+*.ncb
+*.opendb
+*.sln.docstates
+
+# User-specific files
+[Tt]humbs.db
+Desktop.ini
+*.user
+*.users
+*.sln.docstates
+*.userprefs
+*.vs/
