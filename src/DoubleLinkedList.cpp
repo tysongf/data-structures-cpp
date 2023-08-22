@@ -4,16 +4,17 @@ class Node {
 public:
     int data;
     Node* next{};
-    Node(int val) : data(val), next(nullptr) {}
+    Node* prev{};
+    Node(int val) : data(val), next(nullptr), prev(nullptr) {}
 };
 
-class LinkedList {
+class DoubleLinkedList {
 public:
     Node* head;
     Node* tail;
     int nodeCount;
 
-    LinkedList() : head(nullptr), tail(nullptr), nodeCount(0) {}
+    DoubleLinkedList() : head(nullptr), tail(nullptr), nodeCount(0) {}
 
     void pushNode(bool toHead, int val) {
         Node* newNode = new Node(val);
@@ -25,10 +26,12 @@ public:
         else { // existing list
             if (toHead) { // insert at front
                 newNode->next = head;
+                newNode->next->prev = newNode;
                 head = newNode;
             }
             else { // insert at back
                 tail->next = newNode;
+                newNode->prev = tail;
                 tail = newNode;
             }
         }
@@ -49,12 +52,9 @@ public:
         }
 
         else {
-            Node* current = head;
-            while (current->next != tail) {
-                current = current->next;
-            }
-            delete tail;
-            current->next = nullptr;
+            tail = tail->prev;
+            delete tail->next;
+            tail->next = nullptr;
         }
 
         nodeCount--;
@@ -67,25 +67,37 @@ public:
 
         Node* oldHead = head;
         head = head->next;
+        head->prev = nullptr;
         delete oldHead;
 
         nodeCount--;
     }
 
-    void display() {
-        Node* current = head;
-
-        std::cout << "(" << nodeCount << ") ";
-
-        std::cout << "[ ";
-        while (current != nullptr) {
-            std::cout << current->data;
-            if (current->next != nullptr)
-                std::cout << ", ";
-            current = current->next;
+    void display(bool fwd) {
+        if (fwd) {
+            std::cout << "- First to Last -" << std::endl;
+            std::cout << "(" << nodeCount << ") [ ";
+            Node* current = head;
+            while (current != nullptr) {
+                std::cout << current->data;
+                if (current->next != nullptr)
+                    std::cout << ", ";
+                current = current->next;
+            }
+        }
+        else {
+            std::cout << "- Last to First -" << std::endl;
+            std::cout << "(" << nodeCount << ") [ ";
+            Node* current = tail;
+            while (current != nullptr) {
+                std::cout << current->data;
+                if (current->prev != nullptr)
+                    std::cout << ", ";
+                current = current->prev;
+            }
         }
 
         std::cout << " ] " << std::endl;
     }
 
-}; // class LinkedList
+}; // class DoubleLinkedList
